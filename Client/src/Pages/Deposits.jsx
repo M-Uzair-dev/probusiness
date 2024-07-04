@@ -12,12 +12,15 @@ const Deposits = () => {
 
   const loadDeposits = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/deposit/get", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await fetch(
+        "https://probusinessapi.vercel.app/api/deposit/get",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const response = await res.json();
       if (response.success === false) {
         toast.error(response.message || "Something went wrong !");
@@ -36,13 +39,16 @@ const Deposits = () => {
 
   const accept = async (id) => {
     try {
-      const res = await fetch("http://localhost:5000/api/deposit/accept", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id }),
-      });
+      const res = await fetch(
+        "https://probusinessapi.vercel.app/api/deposit/accept",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id }),
+        }
+      );
       const response = await res.json();
       if (response.success === false) {
         toast.error(response.message || "Something went wrong !");
@@ -56,13 +62,16 @@ const Deposits = () => {
   };
   const reject = async (id) => {
     try {
-      const res = await fetch("http://localhost:5000/api/deposit/reject", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id }),
-      });
+      const res = await fetch(
+        "https://probusinessapi.vercel.app/api/deposit/reject",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id }),
+        }
+      );
       const response = await res.json();
       if (response.success === false) {
         toast.error(response.message || "Something went wrong !");

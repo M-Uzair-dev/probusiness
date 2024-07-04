@@ -15,12 +15,15 @@ const Admin = () => {
   const navigate = useNavigate();
   const loadData = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/auth/getadmindata", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await fetch(
+        "https://probusinessapi.vercel.app/api/auth/getadmindata",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const response = await res.json();
       if (response.success === false) {
         toast.error(response.message || "Something went wrong !");

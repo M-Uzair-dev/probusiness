@@ -24,12 +24,15 @@ const Deposit = () => {
   const [loading, setloading] = useState(true);
   const loadData = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/auth/getvalue", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await fetch(
+        "https://probusinessapi.vercel.app/api/auth/getvalue",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const response = await res.json();
       if (response.success && response.value) {
         setData(response.value);
@@ -49,13 +52,16 @@ const Deposit = () => {
   const updateValues = async () => {
     setloading2(true);
     try {
-      const res = await fetch("http://localhost:5000/api/auth/updatevalue", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const res = await fetch(
+        "https://probusinessapi.vercel.app/api/auth/updatevalue",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
       const response = await res.json();
       if (response.success) {
         toast.success("Values updated successfully");

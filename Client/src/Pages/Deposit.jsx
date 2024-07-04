@@ -28,13 +28,16 @@ const Deposit = () => {
         window.location.href = "/login";
         return;
       } else {
-        const res = await fetch(`http://localhost:5000/api/deposit/getdata`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ userid: id }),
-        });
+        const res = await fetch(
+          `https://probusinessapi.vercel.app/api/deposit/getdata`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userid: id }),
+          }
+        );
         const response = await res.json();
         if (response.success === false) {
           toast.error(response.message || "Something went wrong !");
@@ -99,15 +102,18 @@ const Deposit = () => {
         throw new Error("Error with image");
       }
 
-      const res = await fetch("http://localhost:5000/api/deposit/new", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          reqData: { ...data, userid: id, imageurl: data1.url },
-        }),
-      });
+      const res = await fetch(
+        "https://probusinessapi.vercel.app/api/deposit/new",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            reqData: { ...data, userid: id, imageurl: data1.url },
+          }),
+        }
+      );
 
       const data2 = await res.json();
       if (data2.success) {

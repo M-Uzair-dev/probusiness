@@ -38,13 +38,16 @@ const LoginPage = () => {
         return;
       }
       setLoading(true);
-      const data2 = await fetch("http://localhost:5000/api/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ data, reffer: id }),
-      });
+      const data2 = await fetch(
+        "https://probusinessapi.vercel.app/api/auth/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ data, reffer: id }),
+        }
+      );
       const data3 = await data2.json();
       if (data3.success) {
         toast.success("Signup Successful");
@@ -63,13 +66,16 @@ const LoginPage = () => {
   const login = async () => {
     try {
       setLoading(true);
-      const data2 = await fetch("http://localhost:5000/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const data2 = await fetch(
+        "https://probusinessapi.vercel.app/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
       const data3 = await data2.json();
       if (data3.success) {
         toast.success("Login Successful");

@@ -12,12 +12,15 @@ const Withdraws = () => {
   const [value, setValue] = useState({});
   const loadWithdrawals = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/withdraw/get", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await fetch(
+        "https://probusinessapi.vercel.app/api/withdraw/get",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const response = await res.json();
       console.log(response);
       if (response.success === false) {
@@ -37,13 +40,16 @@ const Withdraws = () => {
   }, []);
   const accept = async (id) => {
     try {
-      const res = await fetch("http://localhost:5000/api/withdraw/accept", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id }),
-      });
+      const res = await fetch(
+        "https://probusinessapi.vercel.app/api/withdraw/accept",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id }),
+        }
+      );
       const response = await res.json();
       if (response.success === false) {
         toast.error(response.message || "Something went wrong !");
@@ -57,13 +63,16 @@ const Withdraws = () => {
   };
   const reject = async (id) => {
     try {
-      const res = await fetch("http://localhost:5000/api/withdraw/reject", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id }),
-      });
+      const res = await fetch(
+        "https://probusinessapi.vercel.app/api/withdraw/reject",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id }),
+        }
+      );
       const response = await res.json();
       if (response.success === false) {
         toast.error(response.message || "Something went wrong !");

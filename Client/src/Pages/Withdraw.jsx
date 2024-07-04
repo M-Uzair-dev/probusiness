@@ -26,13 +26,16 @@ const Withdraw = () => {
         window.location.href = "/login";
         return;
       } else {
-        const res = await fetch(`http://localhost:5000/api/withdraw/getdata`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ userid: id }),
-        });
+        const res = await fetch(
+          `https://probusinessapi.vercel.app/api/withdraw/getdata`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userid: id }),
+          }
+        );
         const response = await res.json();
         console.log(response);
         if (response.success === false) {
@@ -68,13 +71,16 @@ const Withdraw = () => {
         return;
       }
       setLoading(true);
-      const res = await fetch("http://localhost:5000/api/withdraw/new", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ reqData: { ...data, userid: id } }),
-      });
+      const res = await fetch(
+        "https://probusinessapi.vercel.app/api/withdraw/new",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ reqData: { ...data, userid: id } }),
+        }
+      );
 
       const data2 = await res.json();
       if (data2.success) {

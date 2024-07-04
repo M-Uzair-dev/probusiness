@@ -20,7 +20,7 @@ const Trees = () => {
           setLoading(false);
         } else {
           const user = await fetch(
-            "http://localhost:5000/api/auth/userDetails",
+            "https://probusinessapi.vercel.app/api/auth/userDetails",
             {
               method: "POST",
               headers: {
